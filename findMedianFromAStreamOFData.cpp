@@ -40,7 +40,7 @@ void sort(vector <int> &v){
 }
 
 int main(){
-    vector <int > test ={7,3,5,4};
+    vector <int > test ={7,3,5,2};
     int n = test.size();
     vector<int> cuurentArray={};
 
