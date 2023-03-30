@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <iomanip>
 using namespace std;
 
 
@@ -50,7 +51,7 @@ int main(){
         cout << "Sorted ";
         sort(cuurentArray);
         printVector(cuurentArray);
-               cout<< "Median ="<<findMedian(cuurentArray)<<endl;
+               cout<< "Median ="<< fixed<< setprecision(1)<< findMedian(cuurentArray)<<endl;
 
 
     }
