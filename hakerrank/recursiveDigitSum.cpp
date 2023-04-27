@@ -11,10 +11,10 @@ string concatenate(string p,int k){
 }
 
 double getSum(string number,int n){
-    double sum=0;
+    long sum=0;
     for (int i=0; i<n ;i++){
-        cout<< "number[i]"<<double(number[i])<<endl;
-        sum=sum+ double(number[i])-48;
+        cout<< "number[i]"<<stoul(number[i])<<endl;
+        sum=sum+ long(number[i])-48;
         cout<<sum<<endl;
 
     }

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <chrono>
+
 using namespace std;
 
 void merge(vector<int> &v, int low, int mid, int high)
@@ -76,6 +77,11 @@ int main()
     end = chrono::high_resolution_clock::now();
     duration = chrono::duration_cast<chrono::nanoseconds>(end - start);
     cout << "Time taken by iterative merge sort: " << duration.count() << " microseconds" << endl;
+
+
+// plot the graph of time taken by merge sort and iterative merge sort
+
+
 
     // for (int i = 0; i < v.size(); i++)
     //     cout << v[i] << " ";
