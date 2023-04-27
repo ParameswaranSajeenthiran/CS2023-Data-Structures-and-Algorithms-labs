@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 
-struct Node {
+struct node {
   int key;
-  struct Node *left, *right;
+  struct node *left, *right;
 };
 
 // Inorder traversal
-void traverseInOrder(struct Node *root) {
+void traverseInOrder(struct node *root) {
 
 if( root == NULL){
   return;
@@ -19,7 +19,7 @@ traverseInOrder(root->right);
 }
 
 // Finding minimum in the node
-struct Node *findMin(struct Node *root) {
+struct node *findMin(struct node *root) {
   if(root==NULL){
     cout << " tree is empty ";
   }else if ( root->left =NULL ){
@@ -31,9 +31,9 @@ struct Node *findMin(struct Node *root) {
 }
 
 // Insert a node
-struct Node *insertNode(struct Node *node, int key) {
+struct node *insertNode(struct node *node, int key) {
 if(node == NULL) {
-		node = new Node();
+		node = new struct node;
 		node->key = key;
 		node->left = node->right = NULL;
 	}
@@ -44,7 +44,7 @@ if(node == NULL) {
 	return node;
 }
 // Deleting a node
-struct Node *deleteNode(struct Node *root, int key) {
+struct node *deleteNode(struct node *root, int key) {
   if(root==NULL){
     return root;
   }else if ( root->key > key){
@@ -56,15 +56,15 @@ struct Node *deleteNode(struct Node *root, int key) {
       delete root;
       root=NULL;
     }else if (root->left==NULL){
-      Node* temp=root;
+      node* temp=root;
       root=root->right;
       delete temp;
     }else if (root->right==NULL){
-      Node* temp=root;
+      node* temp=root;
       root=root->left;
       delete temp;
     }else {
-      Node* temp=findMin(root->right);
+      node* temp=findMin(root->right);
       root->key=temp->key;
       root->right=deleteNode(root->right,temp->key);
     }
@@ -75,7 +75,7 @@ struct Node *deleteNode(struct Node *root, int key) {
 
 // Driver code
 int main() {
-  struct Node *root = NULL;
+  struct node *root = NULL;
 
   int operation;
   int operand;
