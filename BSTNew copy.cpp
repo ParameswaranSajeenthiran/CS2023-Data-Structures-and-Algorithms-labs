@@ -8,68 +8,84 @@ struct node {
 
 // Inorder traversal
 void traverseInOrder(struct node *root) {
+  if (root != NULL){
 
-if( root == NULL){
-  return;
-}
-traverseInOrder(root->left);
-cout << root->key << " ";
-traverseInOrder(root->right);
-
-}
-
-// Finding minimum in the node
-struct node *findMin(struct node *root) {
-  if(root==NULL){
-    cout << " tree is empty ";
-  }else if ( root->left =NULL ){
-    return root;
-
+  traverseInOrder(root->left);
+  cout << root->key << " ";
+  traverseInOrder(root->right);
   }
-  return findMin( root->left);
-
 }
 
 // Insert a node
-struct node *insertNode(struct node *node, int key) {
-if(node == NULL) {
-		node = new struct node;
-		node->key = key;
-		node->left = node->right = NULL;
-	}
-	else if(key <= node->key)
-		node->left = insertNode(node->left,key);
-	else 
-		node->right = insertNode(node->right,key);
-	return node;
+struct node *insertNode(struct node *Node, int key) {
+  if (Node == NULL){
+        
+        node a;
+        a.key = key; 
+  	    a.left = NULL;
+        a.right = NULL;
+        node *insertnode = &a;
+        return insertnode;
+  }    
+ 
+    if (key < Node->key){
+        Node->left = insertNode(Node->left, key);
+    }
+    else if (key > Node->key){
+        Node->right = insertNode(Node->right, key);
+    }
+  
+    return Node;
 }
+
+struct node* minValueNode(struct node* node)
+{
+    struct node* current = node;
+ 
+
+    while (current && current->left != NULL){
+        current = current->left;
+    }
+    return current;
+}
+
 // Deleting a node
 struct node *deleteNode(struct node *root, int key) {
-  if(root==NULL){
-    return root;
-  }else if ( root->key > key){
-    root->left=deleteNode(root->left,key);
-  }else if ( root->key < key){
-    root->right=deleteNode(root->right,key);
-  }else {
-    if(root->left==NULL && root->right==NULL){
-      delete root;
-      root=NULL;
-    }else if (root->left==NULL){
-      node* temp=root;
-      root=root->right;
-      delete temp;
-    }else if (root->right==NULL){
-      node* temp=root;
-      root=root->left;
-      delete temp;
-    }else {
-      node* temp=findMin(root->right);
-      root->key=temp->key;
-      root->right=deleteNode(root->right,temp->key);
+
+  if (root == NULL){
+        return root;
+ 
+    if (key < root->key){
+        root->left = deleteNode(root->left, key);
+    }
+    else if (key > root->key) {
+        root->right = deleteNode(root->right, key);
+    }
+    else {
+        // no child
+        if (root->left == NULL && root->right == NULL)
+            return NULL;
+ 
+        // only one child 
+        else if (root->left == NULL) {
+            struct node* temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL) {
+            struct node* temp = root->left;
+            free(root);
+            return temp;
+        }
+        struct node* temp = minValueNode(root->right);
+ 
+        root->key = temp->key;
+ 
+        root->right = deleteNode(root->right, temp->key);
     }
   }
-  return root;
+    return root;
+
  
 }
 

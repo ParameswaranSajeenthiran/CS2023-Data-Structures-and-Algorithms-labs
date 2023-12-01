@@ -46,6 +46,10 @@
         "string": "cpp",
         "chrono": "cpp",
         "map": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "queue": "cpp",
+        "xtree": "cpp",
+        "deque": "cpp",
+        "unordered_map": "cpp"
     }
 }
